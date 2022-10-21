@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-
 from pathlib import Path
 from argparse import ArgumentParser, Namespace, ArgumentDefaultsHelpFormatter
 from importlib.metadata import Distribution
 import requests
 import json
+import time
 from os.path import exists
 from chris_plugin import chris_plugin
 
@@ -58,5 +57,8 @@ def main(options: Namespace, outputdir: Path):
         with open(str(outputdir)+"/random_cards.json", "w") as f:
             f.write(json_cards)
 
+        for thing in random_cards:
+            print(thing)
+        time.sleep(4)
 if __name__ == '__main__':
     main()

@@ -16,4 +16,4 @@ COPY . .
 ARG extras_require=none
 RUN pip install ".[${extras_require}]"
 
-CMD ["python3","app.py","/usr/local/src/app"]
+CMD ["python3","app.py"]
