@@ -44,7 +44,7 @@ def main(options: Namespace, outputdir: Path):
 
     
     if not exists(str(outputdir)+"/random_cards.json"):
-            
+        print('here')
         random_cards = []
         for i in range(10):
             random_card = requests.get('https://db.ygoprodeck.com/api/v7/randomcard.php')
