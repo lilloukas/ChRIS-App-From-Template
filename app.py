@@ -43,22 +43,22 @@ def main(options: Namespace, outputdir: Path):
     print(DISPLAY_TITLE)
 
     
-    if not exists(str(outputdir)+"/random_cards.json"):
-        print('here')
-        random_cards = []
-        for i in range(10):
-            random_card = requests.get('https://db.ygoprodeck.com/api/v7/randomcard.php')
-            random_cards.append(random_card.json())
-            
-        # Get each random card stored as a single line in the json file    
-        json_cards = "\n".join([json.dumps(random_card) for random_card in random_cards])
 
-        # Save the random card jsons to a file in the specified directory
-        with open(str(outputdir)+"/random_cards.json", "w") as f:
-            f.write(json_cards)
+    print('here')
+    random_cards = []
+    for i in range(10):
+        random_card = requests.get('https://db.ygoprodeck.com/api/v7/randomcard.php')
+        random_cards.append(random_card.json())
+        
+    # Get each random card stored as a single line in the json file    
+    json_cards = "\n".join([json.dumps(random_card) for random_card in random_cards])
 
-        for thing in random_cards:
-            print(thing)
-        time.sleep(4)
+    # Save the random card jsons to a file in the specified directory
+    with open(str(outputdir)+"/random_cards.json", "w") as f:
+        f.write(json_cards)
+
+    for thing in random_cards:
+        print(thing)
+    time.sleep(4)
 if __name__ == '__main__':
     main()
