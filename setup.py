@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='chris-plugin-template',
+    name='Random Cards',
     version='1.0.0',
-    description='A ChRIS DS plugin template',
-    author='FNNDSC',
-    author_email='dev@babyMRI.org',
-    url='https://github.com/FNNDSC/python-chrisapp-template',
+    description='Random Card Json Generator',
+    author='lilloukas',
+    author_email='colejh@bu.edu',
+    url='https://github.com/lilloukas/pytest',
     py_modules=['app'],
     install_requires=['chris_plugin'],
     license='MIT',
