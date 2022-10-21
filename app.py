@@ -58,7 +58,5 @@ def main(options: Namespace, outputdir: Path):
         with open(str(outputdir)+"/random_cards.json", "w") as f:
             f.write(json_cards)
 
-
-
 if __name__ == '__main__':
     main()
