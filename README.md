@@ -1,48 +1,4 @@
-# _ChRIS_ Plugin Template
-
-This is a minimal template repository for _ChRIS_ plugin applications in Python.
-
-## About _ChRIS_ Plugins
-
-A _ChRIS_ plugin is a scientific data-processing software which can run anywhere all-the-same:
-in the cloud via a [web app](https://github.com/FNNDSC/ChRIS_ui/), or on your own laptop
-from the terminal. They are easy to build and easy to understand: most simply, a
-_ChRIS_ plugin is a command-line program which processes data from an input directory
-and creates data to an output directory with the usage
-`commandname [options...] inputdir/ outputdir/`.
-
-For more information, visit our website https://chrisproject.org
-
-## How to Use This Template
-
-Go to https://github.com/FNNDSC/python-chrisapp-template and click "Use this template".
-The newly created repository is ready to use right away.
-
-A script `bootstrap.sh` is provided to help fill in and rename values for your new project.
-It is optional to use.
-
-1. Edit the variables in `bootstrap.sh`
-2. Run `./bootstrap.sh`
-3. Follow the instructions it will print out
-
-## Example Plugins
-
-Here are some good, complete examples of _ChRIS_ plugins created from this template.
-
-- https://github.com/FNNDSC/pl-dcm2niix (basic command example)
-- https://github.com/FNNDSC/pl-mri-preview (uses [NiBabel](https://nipy.org/nibabel/))
-- https://github.com/FNNDSC/pl-fetal-cp-surface-extract (example using Python package project structure)
-
-## What's Inside
-
-| Path                       | Purpose                                                                                                                                                                                                  |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `app.py`                   | Main script: start editing here!                                                                                                                                                                         |
-| `tests/`                   | Unit tests                                                                                                                                                                                               |
-| `setup.py`                 | [Python project metadata and installation script](https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#setup-py)                                                        |
-| `requirements.txt`         | List of Python dependencies                                                                                                                                                                              |
-| `Dockerfile`               | [Container image build recipe](https://docs.docker.com/engine/reference/builder/)                                                                                                                        |
-| `.github/workflows/ci.yml` | "continuous integration" using [Github Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions): automatic testing, building, and uploads to https://chrisstore.co |
+# _ChRIS_ Plugin From Template
 
 ## This plug-in was built to test the process of deploying an extremely simple app based on the ChRIS application environment on OpenShift
 
@@ -51,11 +7,11 @@ To test this, I wrote a really simple python script which makes an API call to y
 In order to implement the app on OpenShift, a Docker image needed to be created. Building the image on my computer (an m1 mac) resulted in some issues, so I resorted to a bit of a workaround.
 1. I used the OpenShift website to attempt to build the container from this github repository.
 2. Once built, I copied the location of the image created on the internal OpenShift registry located in the administrator layout at Builds->ImageStreams->randomcard->details->Image Repository
-3. I ran [create_randomcard.yml](link) placing the copied image location at "image" [here](link) on my local computer, using oc apply -f create_randomcard.yml
+3. I ran [create_randomcard.yml](https://github.com/lilloukas/ChRIS-App-From-Template/blob/a8947b4d6a8fe37d48270dcceef8d0812906689f/create_randomcard.yml) placing the copied image location at "image" [here](https://github.com/lilloukas/ChRIS-App-From-Template/blob/a8947b4d6a8fe37d48270dcceef8d0812906689f/create_randomcard.yml#L8) on my local computer, using oc apply -f create_randomcard.yml
 
 A few notes:
 1. The persistent volume claim used with this application was created on the OpenShift website
-2. Given the pod is designed to start and then close, the restartPolicy specification needs to be set to OnFailure in the [create_randomcard.yml](link), otherwise the pod will enter into a CrashLoopBackOff error
+2. Given the pod is designed to start and then close, the restartPolicy specification needs to be set to OnFailure in the [create_randomcard.yml](https://github.com/lilloukas/ChRIS-App-From-Template/blob/a8947b4d6a8fe37d48270dcceef8d0812906689f/create_randomcard.yml#L13), otherwise the pod will enter into a CrashLoopBackOff error
 3. This page will be updated after I've had the chance to build the docker image on a non-m1 mac to see if that resolves the need for the OpenShift imagestream workaround
 <!-- BEGIN README TEMPLATE
 
