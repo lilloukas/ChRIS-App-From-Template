@@ -44,7 +44,19 @@ Here are some good, complete examples of _ChRIS_ plugins created from this templ
 | `Dockerfile`               | [Container image build recipe](https://docs.docker.com/engine/reference/builder/)                                                                                                                        |
 | `.github/workflows/ci.yml` | "continuous integration" using [Github Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions): automatic testing, building, and uploads to https://chrisstore.co |
 
+## This plug-in was built to test the process of deploying an extremely simple app based on the ChRIS application environment on OpenShift
 
+To test this, I wrote a really simple python script which makes an API call to ygoprodeck, available [here](https://ygoprodeck.com/api-guide/), requests 10 random cards from their database, and stores all of the information for each of those cards as a single line in a json file titled random_cards.json at the specified output_dir. 
+
+In order to implement the app on OpenShift, a Docker image needed to be created. Building the image on my computer (an m1 mac) resulted in some issues, so I resorted to a bit of a workaround.
+1. I used the OpenShift website to attempt to build the container from this github repository.
+2. Once built, I copied the location of the image created on the internal OpenShift registry located in the administrator layout at Builds->ImageStreams->randomcard->details->Image Repository
+3. I ran [create_randomcard.yml](link) placing the copied image location at "image" [here](link) on my local computer, using oc apply -f create_randomcard.yml
+
+A few notes:
+1. The persistent volume claim used with this application was created on the OpenShift website
+2. Given the pod is designed to start and then close, the restartPolicy specification needs to be set to OnFailure in the [create_randomcard.yml](link), otherwise the pod will enter into a CrashLoopBackOff error
+3. This page will be updated after I've had the chance to build the docker image on a non-m1 mac to see if that resolves the need for the OpenShift imagestream workaround
 <!-- BEGIN README TEMPLATE
 
 # ChRIS Plugin Title
